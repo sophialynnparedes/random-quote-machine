@@ -18,6 +18,7 @@ export default function App (props) {
   const [quote, setQuote] = useState("");
   const [author, setAuthor] = useState("");
   const [counter, setCounter] = useState(0);
+  const [background, setBackground] = useState("grey");
   const quotes = [
     {text: "quote", author: "author" },
     {text: "quote2", author: "author2"},
@@ -28,10 +29,11 @@ export default function App (props) {
     var randIndex = Math.floor(Math.random()*quotes.length);
     setQuote(quotes[randIndex].text);
     setAuthor(quotes[randIndex].author);
-    
+    setBackground(Math.floor(Math.random()*colors.length));
   }, [counter]);
 
   return(<>
+  <div id="background" style={{backgroundColor: background}}>
     <div id="quote-box">
       <p id="text">
         {quote}
@@ -45,6 +47,7 @@ export default function App (props) {
       <button id="tweet-quote">
         [Tweet Quote]
       </button>
+    </div>
     </div>
   </>)
 }
